@@ -34,34 +34,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := CLK TEST
+BUILD_ARTIFACT_NAME := Encoder Driver F4
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-CLK\ TEST.elf \
+Encoder\ Driver\ F4.elf \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-CLK\ TEST.list \
+Encoder\ Driver\ F4.list \
 
 OBJCOPY_BIN += \
-CLK\ TEST.bin \
+Encoder\ Driver\ F4.bin \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: CLK\ TEST.elf secondary-outputs
+main-build: Encoder\ Driver\ F4.elf secondary-outputs
 
 # Tool invocations
-CLK\ TEST.elf: $(OBJS) $(USER_OBJS) C:\Users\prom.tecnici\STM32CubeIDE\wk\CLK\ TEST\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "CLK TEST.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\prom.tecnici\STM32CubeIDE\wk\CLK TEST\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="CLK TEST.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Encoder\ Driver\ F4.elf: $(OBJS) $(USER_OBJS) C:\Users\prom.tecnici\Desktop\TIROCINIO\TOMMASO\Position-and-Temperature-Controller\Encoder\ Driver\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Encoder Driver F4.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\prom.tecnici\Desktop\TIROCINIO\TOMMASO\Position-and-Temperature-Controller\Encoder Driver\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Encoder Driver F4.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -70,19 +70,19 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-CLK\ TEST.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "CLK TEST.list"
+Encoder\ Driver\ F4.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "Encoder Driver F4.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-CLK\ TEST.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "CLK TEST.bin"
+Encoder\ Driver\ F4.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "Encoder Driver F4.bin"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) CLK\ TEST.bin CLK\ TEST.elf CLK\ TEST.list CLK\\ TEST.elf default.size.stdout
+	-$(RM) Encoder\ Driver\ F4.bin Encoder\ Driver\ F4.elf Encoder\ Driver\ F4.list Encoder\\ Driver\\ F4.elf default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
