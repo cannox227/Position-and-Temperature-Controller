@@ -1,1 +1,2 @@
 ntc.c:10:8:get_ntc_volt	24	static
+ntc.c:29:19:get_temp_zone	24	static
