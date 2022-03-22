@@ -223,6 +223,10 @@ void nop(uint16_t N){
 		 __asm("nop"); //1/84Mhz=1.25x10e-8s
 	}
 }
+
+void getSample(){
+
+}
 #endif
 /* USER CODE END 4 */
 

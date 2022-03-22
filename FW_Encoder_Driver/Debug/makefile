@@ -12,6 +12,7 @@ RM := rm -rf
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
 -include Core/Src/subdir.mk
+-include subdir.mk
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
@@ -60,8 +61,8 @@ all: main-build
 main-build: Encoder\ Driver\ F4.elf secondary-outputs
 
 # Tool invocations
-Encoder\ Driver\ F4.elf: $(OBJS) $(USER_OBJS) C:\Users\prom.tecnici\Desktop\TIROCINIO\TOMMASO\Position-and-Temperature-Controller\Encoder\ Driver\STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Encoder Driver F4.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\prom.tecnici\Desktop\TIROCINIO\TOMMASO\Position-and-Temperature-Controller\Encoder Driver\STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Encoder Driver F4.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Encoder\ Driver\ F4.elf: $(OBJS) $(USER_OBJS) /Users/tommasocanova/Desktop/UNI/TIROCINIO/Progetto\ ProM/Position-and-Temperature-Controller/FW_Encoder_Driver/STM32F401RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Encoder Driver F4.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"/Users/tommasocanova/Desktop/UNI/TIROCINIO/Progetto ProM/Position-and-Temperature-Controller/FW_Encoder_Driver/STM32F401RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Encoder Driver F4.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -82,7 +83,7 @@ Encoder\ Driver\ F4.bin: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DE
 
 # Other Targets
 clean:
-	-$(RM) Encoder\ Driver\ F4.bin Encoder\ Driver\ F4.elf Encoder\ Driver\ F4.list Encoder\\ Driver\\ F4.elf default.size.stdout
+	-$(RM) $(SIZE_OUTPUT)$(OBJDUMP_LIST)$(EXECUTABLES)$(OBJS)$(S_DEPS)$(S_UPPER_DEPS)$(C_DEPS)$(OBJCOPY_BIN) "Encoder Driver F4.elf"
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST) $(OBJCOPY_BIN)
@@ -94,6 +95,6 @@ fail-specified-linker-script-missing:
 warn-no-linker-script-specified:
 	@echo 'Warning: No linker script specified. Check the linker settings in the build configuration.'
 
-.PHONY: all clean dependents main-build fail-specified-linker-script-missing warn-no-linker-script-specified
+.PHONY: all clean dependents fail-specified-linker-script-missing warn-no-linker-script-specified
 
 -include ../makefile.targets
