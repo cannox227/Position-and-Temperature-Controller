@@ -40,21 +40,21 @@ double get_ptc_volt(ADC_HandleTypeDef* adc, uint32_t timeout){
 }
 
 temperature_level  get_ptc_temp_zone(double ptc_volt){
-	temperature_level temp_zone = PTC_ERROR;
+	temperature_level temp_zone = TEMP_ERROR;
 	if(ptc_volt <= PTC_20_DEG_VOLTAGE_VALUE && ptc_volt >= PTC_MIN_DEG_VOLTAGE_VALUE){
 		temp_zone = COLD;
-		sprintf(ptc_buff, "COLD  \r\n");
+		sprintf(ptc_buff, "PT1000 TEMP ZONE: COLD  \r\n\r\n");
 	} else if(ptc_volt >= PTC_20_DEG_VOLTAGE_VALUE && ptc_volt <= PTC_40_DEG_VOLTAGE_VALUE){
 		temp_zone = NORMAL;
-		sprintf(ptc_buff, "NORMAL  \r\n");
+		sprintf(ptc_buff, "PT1000 TEMP ZONE: NORMAL  \r\n\r\n");
 	} else if(ptc_volt >= PTC_40_DEG_VOLTAGE_VALUE && ptc_volt <= PTC_60_DEG_VOLTAGE_VALUE){
 		temp_zone = HOT;
-		sprintf(ptc_buff, "HOT  \r\n");
+		sprintf(ptc_buff, "PT1000 TEMP ZONE: HOT  \r\n\r\n");
 	} else if(ptc_volt >= PTC_60_DEG_VOLTAGE_VALUE && ptc_volt <= PTC_MAX_DEG_VOLTAGE_VALUE){
 		temp_zone = DANGER;
-		sprintf(ptc_buff, "DANGER  \r\n");
+		sprintf(ptc_buff, "PT1000 TEMP ZONE: DANGER  \r\n\r\n");
 	} else {
-		sprintf(ptc_buff, "ERROR  \r\n");
+		sprintf(ptc_buff, "PT1000 TEMP ZONE: ERROR  \r\n\r\n");
 	}
 	HAL_UART_Transmit(&huart2, (uint8_t*)ptc_buff, strlen(ptc_buff), 100);
 	return temp_zone;

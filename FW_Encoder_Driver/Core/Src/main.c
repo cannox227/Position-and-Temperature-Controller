@@ -22,7 +22,6 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
-#include <ptc.h>
 #include "main.h"
 #include "adc.h"
 #include "tim.h"
@@ -33,6 +32,8 @@
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
 #include <string.h>
+#include "ntc.h"
+#include "ptc.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -125,7 +126,11 @@ int main(void)
 //	 nop(500);
 	  double ptc_volt = get_ptc_volt(&hadc1, 200);
 	 	  get_ptc_temp_zone(ptc_volt);
-	 	  HAL_Delay(500);
+	 	  HAL_Delay(1000);
+
+//	  double ntc_v = get_ntc_volt(&hadc1, 200);
+//	  get_ntc_temp_zone(ntc_v);
+//	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
