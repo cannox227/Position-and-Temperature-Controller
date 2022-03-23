@@ -136,10 +136,12 @@ dmypy.json
 Drivers/*
 MDK-ARM/*
 EWARM/*
-Debug/*
+*/Debug/*
 # CrossWorks project files
 !*/*.hzp
 !*/*.hzs
 
 *.o
+.o
+
 .mxproject
