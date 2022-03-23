@@ -22,6 +22,7 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+#include <ptc.h>
 #include "main.h"
 #include "adc.h"
 #include "tim.h"
@@ -32,7 +33,6 @@
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
 #include <string.h>
-#include "pt1000.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -123,8 +123,8 @@ int main(void)
 //	 runClock();
 //	 //HAL_Delay(100);
 //	 nop(500);
-	  double pt1000_volt = get_pt1000_volt(&hadc1, 200);
-	 	  get_pt1000_temp_zone(pt1000_volt);
+	  double ptc_volt = get_ptc_volt(&hadc1, 200);
+	 	  get_ptc_temp_zone(ptc_volt);
 	 	  HAL_Delay(500);
     /* USER CODE END WHILE */
 
