@@ -32,6 +32,7 @@
 /* USER CODE BEGIN Includes */
 #include <stdio.h>
 #include <string.h>
+#include "pt1000.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -119,10 +120,12 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	 runClock();
-	 //HAL_Delay(100);
-	 nop(500);
-
+//	 runClock();
+//	 //HAL_Delay(100);
+//	 nop(500);
+	  double pt1000_volt = get_pt1000_volt(&hadc1, 200);
+	 	  get_pt1000_temp_zone(pt1000_volt);
+	 	  HAL_Delay(500);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
