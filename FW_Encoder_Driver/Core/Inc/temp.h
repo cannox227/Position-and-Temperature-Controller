@@ -9,8 +9,8 @@
 #define INC_TEMP_H_
 
 #define GPIO_MAX_VOLTAGE 3.3
-#define ADC_BIT_RESOLUTION 2048.0
-#define SAMPLES 30
+#define ADC_BIT_RESOLUTION 4096.0
+#define SAMPLES 30.0
 
 typedef enum{
 	COLD = 0U,

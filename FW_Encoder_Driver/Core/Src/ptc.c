@@ -9,12 +9,12 @@
 #include <stdio.h>
 #include "usart.h"
 
-double ptc_volt, adc_value;
+double ptc_volt, ptc_adc_value;
 char ptc_buff[300];
 
 double get_ptc_volt(ADC_HandleTypeDef* adc, uint32_t timeout){
 
-	adc_value = 0.0;
+	ptc_adc_value = 0.0;
 
 	ADC_ChannelConfTypeDef sConfig = {0};
 	sConfig.Channel = PTC_CHANNEL;
@@ -28,10 +28,13 @@ double get_ptc_volt(ADC_HandleTypeDef* adc, uint32_t timeout){
 	HAL_ADC_PollForConversion(adc, timeout);
 
 	for (uint8_t i = 0; i < SAMPLES; i++){
-			adc_value += HAL_ADC_GetValue(adc);
+			ptc_adc_value += HAL_ADC_GetValue(adc);
 	}
 
-	ptc_volt = (adc_value / SAMPLES) * GPIO_MAX_VOLTAGE / ADC_BIT_RESOLUTION;
+	ptc_volt = (ptc_adc_value / SAMPLES) * GPIO_MAX_VOLTAGE / ADC_BIT_RESOLUTION;
+
+	sprintf(ptc_buff, "PTC ADC  %f [V] \r\n", (ptc_adc_value / SAMPLES));
+		HAL_UART_Transmit(&huart2, (uint8_t *)ptc_buff, strlen(ptc_buff), 100);
 
 	HAL_ADC_Stop(adc);
 	sprintf(ptc_buff, "PTC %f [V] \r\n", ptc_volt);
