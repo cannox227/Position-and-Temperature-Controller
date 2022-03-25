@@ -14,6 +14,14 @@ double get_ntc_volt(ADC_HandleTypeDef* adc, uint32_t timeout){
 
 	ntc_adc_value = 0.0;
 
+	ADC_ChannelConfTypeDef sConfig = {0};
+		sConfig.Channel = NTC_CHANNEL;
+		sConfig.Rank = 1;
+		sConfig.SamplingTime = ADC_SAMPLETIME_144CYCLES;
+		if(HAL_ADC_ConfigChannel(adc, &sConfig) != HAL_OK){
+			Error_Handler();
+		}
+
 	HAL_ADC_Start(adc);
 	HAL_ADC_PollForConversion(adc, timeout);
 
@@ -21,7 +29,7 @@ double get_ntc_volt(ADC_HandleTypeDef* adc, uint32_t timeout){
 		ntc_adc_value += HAL_ADC_GetValue(adc);
 	}
 
-	sprintf(ntc_buff, "NTC ADC %f [V] \r\n",ntc_adc_value);
+	sprintf(ntc_buff, "NTC ADC %f [V] \r\n", ntc_adc_value / SAMPLES );
 	HAL_UART_Transmit(&huart2, (uint8_t *)ntc_buff, strlen(ntc_buff), 100);
 
 	ntc_volt = (ntc_adc_value / SAMPLES) * GPIO_MAX_VOLTAGE / ADC_BIT_RESOLUTION;

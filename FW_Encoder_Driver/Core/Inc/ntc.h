@@ -16,8 +16,7 @@
 #include <stdio.h>
 #include <string.h>
 
-#define BUFF_SIZE 300
-
+#define NTC_CHANNEL (ADC_CHANNEL_8)
 
 #define NTC_20_DEG_VOLTAGE_VALUE 		2.203456
 #define NTC_40_DEG_VOLTAGE_VALUE 		1.482085

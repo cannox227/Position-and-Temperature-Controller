@@ -8,6 +8,8 @@
 #ifndef INC_TEMP_H_
 #define INC_TEMP_H_
 
+#define BUFF_SIZE 300
+
 #define GPIO_MAX_VOLTAGE 3.3
 #define ADC_BIT_RESOLUTION 4096.0
 #define SAMPLES 30.0

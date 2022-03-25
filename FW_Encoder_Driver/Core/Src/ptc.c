@@ -10,7 +10,7 @@
 #include "usart.h"
 
 double ptc_volt, ptc_adc_value;
-char ptc_buff[300];
+char ptc_buff[BUFF_SIZE];
 
 double get_ptc_volt(ADC_HandleTypeDef* adc, uint32_t timeout){
 
