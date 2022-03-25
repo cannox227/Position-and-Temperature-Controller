@@ -55,8 +55,6 @@
 /* Private variables ---------------------------------------------------------*/
 
 /* USER CODE BEGIN PV */
-double ptc_volt, ptc_adc_value;
-char ptc_buff[300];
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
