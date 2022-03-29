@@ -65,6 +65,7 @@ void runClock();
 void readEncoderBit(GPIO_TypeDef*, uint16_t);
 void println(UART_HandleTypeDef *, char[]);
 void nop(uint16_t);
+void getTemperature();
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
@@ -111,7 +112,7 @@ int main(void)
   MX_ADC1_Init();
   /* USER CODE BEGIN 2 */
 	//setInitialClockState(GPIO_PIN_SET);
-	HAL_GPIO_WritePin(DEBUG_LINE_GPIO_Port, DEBUG_LINE_Pin, GPIO_PIN_RESET);
+	//HAL_GPIO_WritePin(DEBUG_LINE_GPIO_Port, DEBUG_LINE_Pin, GPIO_PIN_RESET);
 	HAL_GPIO_WritePin(SSI_CLK_GPIO_Port,  SSI_CLK_Pin, GPIO_PIN_SET);
 	HAL_Delay(100);
 	println(&huart2, "HELLO! \r\n");
@@ -122,48 +123,12 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 	while (1)
 	{
-		//	 runClock();
-		//	 //HAL_Delay(100);
-		//	 nop(500);
+		runClock();
+		//HAL_Delay(100);
+		nop(500);
 
-		//worka
-		//		double ptc_volt = get_ptc_volt(&hadc1, 200);
-		//		get_ptc_temp_zone(ptc_volt);
-		//		HAL_Delay(1000);
+		getTemperature();
 
-
-		double ptc_volt = get_ptc_volt(&hadc1, 200);
-		get_ptc_temp_zone(ptc_volt);
-		HAL_Delay(1000);
-
-		double ntc_volt = get_ntc_volt(&hadc1, 200);
-		get_ntc_temp_zone(ntc_volt);
-		HAL_Delay(1000);
-		println(&huart2, "------------------------------");
-
-
-		//		HAL_ADC_Start(&hadc1);
-		//			HAL_ADC_PollForConversion(&hadc1, HAL_MAX_DELAY );
-		//
-		//		ptc_adc_value = 0.0;
-		//
-		//		for (uint8_t i = 0; i < SAMPLES; i++){
-		//					ptc_adc_value += HAL_ADC_GetValue(&hadc1);
-		//			}
-		//
-		//			ptc_volt = (ptc_adc_value / 30.0) * 3.3 / 4096.0;
-		//
-		//			sprintf(ptc_buff, "PTC ADC  %f [V] \r\n", (ptc_adc_value / 30.0));
-		//				HAL_UART_Transmit(&huart2, (uint8_t *)ptc_buff, strlen(ptc_buff), 100);
-		//
-		//			HAL_ADC_Stop(&hadc1);
-		//			sprintf(ptc_buff, "PTC %f [V] \r\n", ptc_volt);
-		//				HAL_UART_Transmit(&huart2, (uint8_t*)ptc_buff, strlen(ptc_buff), 100);
-		//				HAL_Delay(500);
-
-		//	  double ntc_v = get_ntc_volt(&hadc1, 200);
-		//	  get_ntc_temp_zone(ntc_v);
-		//	  HAL_Delay(1000);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
@@ -269,6 +234,17 @@ void getSample(){
 
 }
 #endif
+
+void getTemperature(){
+	double ptc_volt = get_ptc_volt(&hadc1, 200);
+	get_ptc_temp_zone(ptc_volt);
+	HAL_Delay(1000);
+
+	double ntc_volt = get_ntc_volt(&hadc1, 200);
+	get_ntc_temp_zone(ntc_volt);
+	HAL_Delay(1000);
+	println(&huart2, "------------------------------");
+}
 /* USER CODE END 4 */
 
 /**
