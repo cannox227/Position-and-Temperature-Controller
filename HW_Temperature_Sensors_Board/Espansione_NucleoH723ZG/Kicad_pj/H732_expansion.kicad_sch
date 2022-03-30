@@ -379,10 +379,10 @@
       (reference "#PWR042") (unit 1) (value "GND") (footprint "")
     )
     (path "/0ee362d6-46b8-4315-b742-5f777d4f9d69/fedb4436-c043-470c-be08-17de472fb5bc"
-      (reference "C1") (unit 1) (value "10n") (footprint "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder")
+      (reference "C1") (unit 1) (value "1u") (footprint "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder")
     )
     (path "/0ee362d6-46b8-4315-b742-5f777d4f9d69/649c1a92-c9e0-4278-b4b8-9ce6f158bfa5"
-      (reference "C2") (unit 1) (value "10n") (footprint "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder")
+      (reference "C2") (unit 1) (value "1u") (footprint "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder")
     )
     (path "/0ee362d6-46b8-4315-b742-5f777d4f9d69/79d94ab7-31f6-4156-b56e-50ba1c9c19c0"
       (reference "C3") (unit 1) (value "100n") (footprint "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder")

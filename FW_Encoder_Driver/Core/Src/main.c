@@ -44,7 +44,7 @@
 /* Private define ------------------------------------------------------------*/
 /* USER CODE BEGIN PD */
 #define WORK
-#define N_BIT 52
+#define N_BIT 27
 /* USER CODE END PD */
 
 /* Private macro -------------------------------------------------------------*/
