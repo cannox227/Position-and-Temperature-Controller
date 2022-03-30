@@ -29,7 +29,7 @@ double get_ntc_volt(ADC_HandleTypeDef* adc, uint32_t timeout){
 		ntc_adc_value += HAL_ADC_GetValue(adc);
 	}
 
-	sprintf(ntc_buff, "NTC ADC %f [V] \r\n", ntc_adc_value / SAMPLES );
+	sprintf(ntc_buff, "NTC ADC %f [bit] \r\n", ntc_adc_value / SAMPLES );
 	HAL_UART_Transmit(&huart2, (uint8_t *)ntc_buff, strlen(ntc_buff), 100);
 
 	ntc_volt = (ntc_adc_value / SAMPLES) * GPIO_MAX_VOLTAGE / ADC_BIT_RESOLUTION;

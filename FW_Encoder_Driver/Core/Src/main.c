@@ -128,6 +128,7 @@ int main(void)
 		//nop(500);
 
 		getTemperature();
+		HAL_Delay(500);
 
     /* USER CODE END WHILE */
 
