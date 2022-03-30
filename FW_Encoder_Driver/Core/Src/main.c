@@ -123,9 +123,9 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 	while (1)
 	{
-		runClock();
+		//runClock();
 		//HAL_Delay(100);
-		nop(500);
+		//nop(500);
 
 		getTemperature();
 
