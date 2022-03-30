@@ -4,7 +4,7 @@
  * Created on: 22 mar 2022
  * Author: Lisa Santarossa
  */
-#include <ptc.h>
+#include "ptc.h"
 #include <string.h>
 #include <stdio.h>
 #include "usart.h"
@@ -33,10 +33,11 @@ double get_ptc_volt(ADC_HandleTypeDef* adc, uint32_t timeout){
 
 	ptc_volt = (ptc_adc_value / SAMPLES) * GPIO_MAX_VOLTAGE / ADC_BIT_RESOLUTION;
 
-	sprintf(ptc_buff, "PTC ADC  %f [V] \r\n", (ptc_adc_value / SAMPLES));
-		HAL_UART_Transmit(&huart2, (uint8_t *)ptc_buff, strlen(ptc_buff), 100);
+	sprintf(ptc_buff, "PTC ADC  %f [bit] \r\n", (ptc_adc_value / SAMPLES));
+	HAL_UART_Transmit(&huart2, (uint8_t *)ptc_buff, strlen(ptc_buff), 100);
 
 	HAL_ADC_Stop(adc);
+
 	sprintf(ptc_buff, "PTC %f [V] \r\n", ptc_volt);
 	HAL_UART_Transmit(&huart2, (uint8_t*)ptc_buff, strlen(ptc_buff), 100);
 	return ptc_volt;
