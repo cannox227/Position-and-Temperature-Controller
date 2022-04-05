@@ -32,7 +32,7 @@ void MX_TIM11_Init(void)
 
   /* USER CODE BEGIN TIM11_Init 0 */
 	// ClockSource 84 MHz
-	// 84 MHz / (84-1) Prescaler => 1 MHz (frequenza timer)
+	// 84 MHz / (8400-1) Prescaler => 1 MHz (frequenza timer)
 	// 1 MHz / 2 Count Period => 500 KHz => 2us
 
   /* USER CODE END TIM11_Init 0 */
@@ -41,9 +41,9 @@ void MX_TIM11_Init(void)
 
   /* USER CODE END TIM11_Init 1 */
   htim11.Instance = TIM11;
-  htim11.Init.Prescaler = 83;
+  htim11.Init.Prescaler = 1;
   htim11.Init.CounterMode = TIM_COUNTERMODE_UP;
-  htim11.Init.Period = 2;
+  htim11.Init.Period = 167;
   htim11.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim11.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_Base_Init(&htim11) != HAL_OK)
