@@ -181,7 +181,7 @@ int main(void)
 	  	      //12 bits multi-turn
 	  	      turn[i]  = (int16_t)((enc_bits[i] & 0x01FFE000) >> 13);
 	  	    }
-	  	    tx_buff_size = (uint8_t) sprintf((char *) tx_buff, "RES:\n\r%d|%d|%d mDeg\n\r%d|%d|%d turns\n\r",
+	  	    tx_buff_size = (uint8_t) sprintf((char *) tx_buff, "------\r\nENCODER:\r\n%lu|%lu|%lu mDeg\n\r%u|%u|%u turns\n\r\n\r",
 	  	                          angle[0], angle[1], angle[2], turn[0], turn[1], turn[2]);
 	  	    HAL_UART_Transmit(&huart3, (uint8_t*)tx_buff, tx_buff_size, 1000);
 	  	    getTemperature();
@@ -272,6 +272,8 @@ void PeriphCommonClock_Config(void)
 
 /* USER CODE BEGIN 4 */
 void getTemperature(){
+
+	HAL_UART_Transmit(&huart3, (uint8_t*)"Temperatures: \r\n", strlen("Temperatures: \r\n"), 1000);
 	double ptc_volt = get_ptc_volt(&hadc3, 200);
 	get_ptc_temp_zone(ptc_volt);
 	HAL_Delay(1000);

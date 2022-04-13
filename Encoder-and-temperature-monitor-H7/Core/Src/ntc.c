@@ -15,9 +15,16 @@ double get_ntc_volt(ADC_HandleTypeDef* adc, uint32_t timeout){
 	ntc_adc_value = 0.0;
 
 	ADC_ChannelConfTypeDef sConfig = {0};
-		sConfig.Channel = NTC_CHANNEL;
-		sConfig.Rank = 1;
-		sConfig.SamplingTime = ADC_SAMPLETIME_32CYCLES_5; //F4 Version: ADC_SAMPLETIME_144CYCLES;
+	sConfig.Channel = NTC_CHANNEL;
+	sConfig.Rank = ADC_REGULAR_RANK_1; //F4 Version: 1;
+
+	sConfig.SingleDiff = ADC_SINGLE_ENDED; 				// Needed on H7
+	sConfig.OffsetNumber = ADC_OFFSET_NONE;				// Needed on H7
+	sConfig.Offset = 0;                      			// Needed on H7
+	sConfig.OffsetSign = ADC3_OFFSET_SIGN_NEGATIVE;		// Needed on H7
+	sConfig.OffsetSaturation = DISABLE;					// Needed on H7
+
+		sConfig.SamplingTime = ADC3_SAMPLETIME_6CYCLES_5; //F4 Version: ADC_SAMPLETIME_144CYCLES;
 		if(HAL_ADC_ConfigChannel(adc, &sConfig) != HAL_OK){
 			Error_Handler();
 		}
