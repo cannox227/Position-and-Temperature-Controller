@@ -40,8 +40,8 @@ double get_ptc_volt(ADC_HandleTypeDef* adc, uint32_t timeout){
 
 	ptc_volt = (ptc_adc_value / SAMPLES) * GPIO_MAX_VOLTAGE / ADC_BIT_RESOLUTION;
 
-	sprintf(ptc_buff, "PTC ADC  %f [bit] \r\n", (ptc_adc_value / SAMPLES));
-	HAL_UART_Transmit(&huart3, (uint8_t *)ptc_buff, strlen(ptc_buff), 100);
+//	sprintf(ptc_buff, "PTC ADC  %f [bit] \r\n", (ptc_adc_value / SAMPLES));
+//	HAL_UART_Transmit(&huart3, (uint8_t *)ptc_buff, strlen(ptc_buff), 100);
 
 	HAL_ADC_Stop(adc);
 
@@ -52,13 +52,13 @@ double get_ptc_volt(ADC_HandleTypeDef* adc, uint32_t timeout){
 
 temperature_level  get_ptc_temp_zone(double ptc_volt){
 	temperature_level temp_zone = TEMP_ERROR;
-	if(ptc_volt <= PTC_20_DEG_VOLTAGE_VALUE && ptc_volt >= PTC_MIN_DEG_VOLTAGE_VALUE){
+	if( ptc_volt >= PTC_MIN_DEG_VOLTAGE_VALUE && ptc_volt < PTC_20_DEG_VOLTAGE_VALUE){
 		temp_zone = COLD;
 		sprintf(ptc_buff, "PT1000 TEMP ZONE: COLD  \r\n\r\n");
-	} else if(ptc_volt >= PTC_20_DEG_VOLTAGE_VALUE && ptc_volt <= PTC_40_DEG_VOLTAGE_VALUE){
+	} else if(ptc_volt >= PTC_20_DEG_VOLTAGE_VALUE && ptc_volt < PTC_40_DEG_VOLTAGE_VALUE){
 		temp_zone = NORMAL;
 		sprintf(ptc_buff, "PT1000 TEMP ZONE: NORMAL  \r\n\r\n");
-	} else if(ptc_volt >= PTC_40_DEG_VOLTAGE_VALUE && ptc_volt <= PTC_60_DEG_VOLTAGE_VALUE){
+	} else if(ptc_volt >= PTC_40_DEG_VOLTAGE_VALUE && ptc_volt < PTC_60_DEG_VOLTAGE_VALUE){
 		temp_zone = HOT;
 		sprintf(ptc_buff, "PT1000 TEMP ZONE: HOT  \r\n\r\n");
 	} else if(ptc_volt >= PTC_60_DEG_VOLTAGE_VALUE && ptc_volt <= PTC_MAX_DEG_VOLTAGE_VALUE){

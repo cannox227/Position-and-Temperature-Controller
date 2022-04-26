@@ -726,7 +726,7 @@
     (uuid f7dd52d2-403d-4594-87b3-1331273f1a38)
   )
 
-  (image (at 48.26 135.89) (scale 0.33)
+  (image (at 43.18 173.99) (scale 0.33)
     (uuid a7bd2bfb-16a8-41cb-9eeb-388c1199eed2)
     (data
       iVBORw0KGgoAAAANSUhEUgAABosAAAPhCAYAAAAhK5YdAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
@@ -2171,7 +2171,7 @@
       sPUeeOCBs/8/KGzJdkusuDgAAAAASUVORK5CYII=
     )
   )
-  (image (at 247.65 85.09) (scale 0.33)
+  (image (at 245.11 54.61) (scale 0.33)
     (uuid d3f2ca42-e9e1-4bb5-9cf9-14b9203daa98)
     (data
       iVBORw0KGgoAAAANSUhEUgAABwEAAAPhCAYAAAARgtAVAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
@@ -3200,17 +3200,9 @@
     (effects (font (size 1.27 1.27) (thickness 0.254) bold) (justify left bottom))
     (uuid 8b64d9f2-71d9-4a2a-abeb-1a2cbf3e5f4b)
   )
-  (text "F4 PT100 PIN : A4\n" (at 237.49 123.19 0)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid 8b8d16cf-c006-49ad-9970-e3d988d42355)
-  )
-  (text "Vdiv = Vin*NTC/(R+NTC)" (at 53.34 114.3 0)
+  (text "Vdiv = Vin*NTC/(R+NTC)" (at 82.55 132.08 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
     (uuid a8725350-cba7-429a-98fb-8a4574092b73)
-  )
-  (text "F4 NTC PIN : A3\n\n\n" (at 60.96 111.76 0)
-    (effects (font (size 1.27 1.27)) (justify left bottom))
-    (uuid f2516246-020e-4072-8aad-e94bc5942202)
   )
   (text "Vout = Vin*(1+Rb/Ra)" (at 102.87 96.52 0)
     (effects (font (size 1.27 1.27)) (justify left bottom))
@@ -3386,7 +3378,7 @@
     (property "Reference" "C2" (id 0) (at 99.06 102.87 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "" (id 1) (at 99.06 105.41 0)
+    (property "Value" "1u" (id 1) (at 99.06 105.41 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" (id 2) (at 104.14 104.14 0)
@@ -3720,7 +3712,7 @@
     (in_bom yes) (on_board yes)
     (uuid eff2d806-cd62-4973-a6a5-fed50ebd519a)
     (property "Reference" "R2" (id 0) (at 78.613 118.11 90))
-    (property "Value" "NTCG163JH103JT1" (id 1) (at 80.9244 118.11 90))
+    (property "Value" "NTCG063JH103JT1" (id 1) (at 80.9244 118.11 90))
     (property "Footprint" "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder" (id 2) (at 83.82 118.11 0)
       (effects (font (size 1.27 1.27)) hide)
     )
@@ -3752,7 +3744,7 @@
     (property "Reference" "C1" (id 0) (at 97.79 116.8462 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
-    (property "Value" "" (id 1) (at 97.79 119.3862 0)
+    (property "Value" "1u" (id 1) (at 97.79 119.3862 0)
       (effects (font (size 1.27 1.27)) (justify left))
     )
     (property "Footprint" "Capacitor_SMD:C_0603_1608Metric_Pad1.08x0.95mm_HandSolder" (id 2) (at 95.25 118.11 0)

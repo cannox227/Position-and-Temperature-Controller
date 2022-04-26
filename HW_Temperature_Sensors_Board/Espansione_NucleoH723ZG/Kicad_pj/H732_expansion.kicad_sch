@@ -481,7 +481,7 @@
       (reference "R1") (unit 1) (value "10k") (footprint "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder")
     )
     (path "/0ee362d6-46b8-4315-b742-5f777d4f9d69/eff2d806-cd62-4973-a6a5-fed50ebd519a"
-      (reference "R2") (unit 1) (value "NTCG163JH103JT1") (footprint "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder")
+      (reference "R2") (unit 1) (value "NTCG063JH103JT1") (footprint "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder")
     )
     (path "/0ee362d6-46b8-4315-b742-5f777d4f9d69/a3f11492-7936-40fd-853f-e2b42a257f46"
       (reference "R3") (unit 1) (value "22k") (footprint "Resistor_SMD:R_0603_1608Metric_Pad0.98x0.95mm_HandSolder")

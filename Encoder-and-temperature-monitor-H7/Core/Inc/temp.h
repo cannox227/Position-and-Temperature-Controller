@@ -14,6 +14,8 @@
 #define ADC_BIT_RESOLUTION 4096.0
 #define SAMPLES 30.0
 
+#define CUSTOM_BOARD
+
 typedef enum{
 	COLD = 0U,
 	NORMAL,
