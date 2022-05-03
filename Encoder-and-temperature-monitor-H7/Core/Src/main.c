@@ -38,7 +38,7 @@
 #define TRUE   		1
 #define FALSE   	0
 #define ENC_BITs    27  // 13 multiturn, 12 angle, 2 stop-bits
-#define AVG_MEAS    3
+#define AVG_MEAS    3   // Number of samples
 #define BUF_SIZE   80
 /* USER CODE END PTD */
 
@@ -152,7 +152,7 @@ int main(void)
 			{
 				while (ping){}
 
-				if ((enc_clk_count % 4) == 0)
+				if ((enc_clk_count % 4) == 0) // Every data bit it's 4 timer interrupts
 				{
 					HAL_GPIO_TogglePin(GPIO_DEBUG_GPIO_Port, GPIO_DEBUG_Pin);
 					enc_bits[i] <<= 1;
@@ -179,7 +179,7 @@ int main(void)
 		{
 			enc_bits[i] >>= 2;
 			//13 bits angle
-			angle[i] = (int32_t) ((enc_bits[i] & 0x00001FFF) * 44);
+			angle[i] = (int32_t) ((enc_bits[i] & 0x00001FFF) * 44); // (360 / 2^13) * 1000 = 44 [mDeg]
 			//12 bits multi-turn
 			turn[i]  = (int16_t)((enc_bits[i] & 0x01FFE000) >> 13);
 		}
