@@ -53,7 +53,7 @@ This PCB allows the microcontroller to handle different voltages to supply all t
 Then you can build and run using the IDE
 
 # Report
-[Full report](/Canova_Santarossa_Embedded_Systems_Project_Report.pdfC)
+[Full report](/Canova_Santarossa_Embedded_Systems_Project_Report.pdf)
 
 # Credits
 This project was made by:
